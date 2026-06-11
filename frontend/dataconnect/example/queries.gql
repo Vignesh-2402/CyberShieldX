@@ -1,0 +1,35 @@
+mutation CreateAlert($message: String!, $threatId: UUID!, $userId: UUID!) @auth(level: USER) {
+  alert_insert(data: {
+    message: $message,
+    threatId: $threatId,
+    userId: $userId,
+    isRead: false,
+    createdAt_expr: "request.time"
+  })
+}
+
+query ListUserAlerts @auth(level: USER) {
+  alerts(where: {
+    userId: { eq_expr: "auth.uid" }
+  }) {
+    id
+    message
+    isRead
+    createdAt
+    threat {
+      type
+      severity
+    }
+  }
+}
+
+mutation MarkAlertAsRead($id: UUID!) @auth(level: USER) {
+  alert_update(
+    key: { id: $id },
+    data: { isRead: true }
+  )
+}
+
+mutation DeleteAlert($id: UUID!) @auth(level: USER) {
+  alert_delete(key: { id: $id })
+}

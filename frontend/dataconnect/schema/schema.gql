@@ -1,0 +1,49 @@
+type User @table {
+  email: String!
+  fullName: String!
+  createdAt: Timestamp!
+  role: String
+  organizationId: String
+}
+
+type Device @table {
+  deviceName: String!
+  type: String!
+  status: String!
+  lastSyncAt: Timestamp
+  user: User!
+}
+
+type Threat @table {
+  type: String!
+  severity: String!
+  status: String!
+  detectedAt: Timestamp!
+  description: String
+  mitigationAdvice: String
+  device: Device!
+}
+
+type SecurityLog @table {
+  eventType: String!
+  timestamp: Timestamp!
+  message: String!
+  metadata: String
+  user: User!
+}
+
+type ThreatIntel @table {
+  signature: String!
+  threatCategory: String!
+  riskLevel: Int!
+  source: String
+  reliabilityScore: Float
+}
+
+type Alert @table {
+  message: String!
+  isRead: Boolean!
+  createdAt: Timestamp!
+  user: User!
+  threat: Threat!
+}

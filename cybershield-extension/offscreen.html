@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body>
+<audio id="alert" src="alert.mp3" preload="auto"></audio>
+<script>
+chrome.runtime.onMessage.addListener((msg) => {
+  if (msg.type === "PLAY_ALERT") {
+    const audio = document.getElementById("alert");
+    audio.currentTime = 0;
+    audio.play().catch(console.warn);
+  }
+});
+</script>
+</body>
+</html>

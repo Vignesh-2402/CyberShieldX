@@ -1,0 +1,35 @@
+mutation CreateDemoData @transaction {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      email: "alice@example.com",
+      fullName: "Alice Smith",
+      createdAt: "2023-10-01T10:00:00Z"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      email: "bob@example.com",
+      fullName: "Bob Jones",
+      createdAt: "2023-10-02T12:00:00Z"
+    }
+  ])
+  device_insertMany(data: [
+    {
+      id: "770e8400-e29b-41d4-a716-446655440002",
+      deviceName: "Work Laptop",
+      type: "Laptop",
+      status: "Active",
+      user: {id: "550e8400-e29b-41d4-a716-446655440000"}
+    }
+  ])
+  threat_insertMany(data: [
+    {
+      id: "990e8400-e29b-41d4-a716-446655440003",
+      type: "Malware",
+      severity: "High",
+      status: "Detected",
+      detectedAt: "2023-10-05T09:00:00Z",
+      device: {id: "770e8400-e29b-41d4-a716-446655440002"}
+    }
+  ])
+}
