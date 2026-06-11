@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🛡️ CyberShield X
 
 ## AI-Powered Cybersecurity Platform
@@ -257,3 +258,6 @@ CyberShield X – AI-Powered Cybersecurity Platform
 ## 📜 License
 
 This project is developed for educational, research, and demonstration purposes.
+=======
+# CyberShieldX
+>>>>>>> a4d8ce9499d9471d3ac3a32f299180d80ad43e38
